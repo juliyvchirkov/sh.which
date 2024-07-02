@@ -1,0 +1,10 @@
+--require shellspec
+--helperdir lib
+--default-path tests/shellspec
+--pattern "*"
+--skip-message quiet
+--pending-message quiet
+--format documentation
+--hide-deprecations
+--warning-as-failure
+--no-quick
