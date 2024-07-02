@@ -1,0 +1,8 @@
+color=auto
+extended-analysis=true
+external-sources=true
+severity=style
+wiki-link-count=10
+format=diff
+shell=sh
+enable=all
