@@ -3,20 +3,87 @@
 ##################################
 
 which() (
-    [ "${1}" = "--" ] && shift
-
     if [ $# -gt 0 ]; then
-                      #############################
-                      # shellcheck disable=SC2086 #
-                      #############################
-        for path in $(IFS=: && printf "%s " ${PATH}); do
-            [ -x "${path}/${1}" ] && printf "%s/%s" "${path}" "${1}" && return 0
-        done
+        while [ $# -gt 0 ]; do
+            case "${1}" in
+            --)
+                shift
 
-        return 1
+                break
+
+                ;;
+            -a)
+                locateall=1
+
+                shift
+
+                ;;
+            -s)
+                besilent=1
+
+                shift
+
+                ;;
+            -sa | -as)
+                locateall=1
+                besilent=1
+
+                shift
+
+                ;;
+            -*)
+                printf -- "which: invalid option — %s\n\n" "${1#-}" >&2
+
+                exitstatus=2
+
+                set --
+
+                break
+
+                ;;
+            *)
+                break
+
+                ;;
+            esac
+        done
     fi
 
-    printf >&2 "%s: %s [--] %s\n%s\n" "Usage" "which" "COMMAND" "Writes the full path of COMMAND to standard output."
+    if [ $# -gt 0 ]; then
+        for command; do
+            located=
 
-    return 1
+            IFS=":"
+
+            #############################
+            # shellcheck disable=SC2086 #
+            #############################
+            for path in ${PATH}; do
+                if [ -x "${path}/${command}" ]; then
+                    located=1
+
+                    [ -n "${besilent:-}" ] || printf -- "%s/%s\n" "${path}" "${command}"
+
+                    [ -n "${locateall:-}" ] || break
+                fi
+            done
+
+            [ -n "${located}" ] || exitstatus=1
+        done
+
+        return "${exitstatus:-0}"
+    fi
+
+    printf "%s\n\n" "which: locates command(s) and reports to standard output" >&2
+    printf "%s\n" "USAGE" >&2
+    printf "    %s\n" "which [-as] command …" >&2
+    printf "%s\n" "OPTIONS" >&2
+    printf "    %s     %s\n" "-a" "print all matches" >&2
+    printf "    %s     %s\n" "-s" "silently return 0 if all commands are located or 1 otherwise" >&2
+    printf "%s\n" "EXIT STATUS" >&2
+    printf "    %s      %s\n" 0 "all commands are located" >&2
+    printf "    %s      %s\n" 1 "failed to locate some command(s)" >&2
+    printf "    %s      %s\n" 2 "an invalid option is specified" >&2
+
+    return "${exitstatus:-1}"
 )
