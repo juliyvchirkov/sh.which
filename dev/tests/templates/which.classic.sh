@@ -271,4 +271,52 @@ Describe "${shellfulltitle}"
     The stdout should equal "${shebang}"
     The status should equal 1
   End
+
+  Example "Classic edition: which ${shellbinary} -a"
+    path="${PATH}"
+    PATH="${extrapath}:${PATH}"
+
+    When call which ${shellbinary} -a
+
+    PATH="${path}"
+
+    The stdout should equal "${shebang}"
+    The status should equal 1
+  End
+
+  Example "Classic edition: which ${shellbinary} -s"
+    path="${PATH}"
+    PATH="${extrapath}:${PATH}"
+
+    When call which ${shellbinary} -s
+
+    PATH="${path}"
+
+    The stdout should equal "${shebang}"
+    The status should equal 1
+  End
+
+  Example "Classic edition: which ${shellbinary} -as"
+    path="${PATH}"
+    PATH="${extrapath}:${PATH}"
+
+    When call which ${shellbinary} -as
+
+    PATH="${path}"
+
+    The stdout should equal "${shebang}"
+    The status should equal 1
+  End
+
+  Example "Classic edition: which ${shellbinary} -sa"
+    path="${PATH}"
+    PATH="${extrapath}:${PATH}"
+
+    When call which ${shellbinary} -sa
+
+    PATH="${path}"
+
+    The stdout should equal "${shebang}"
+    The status should equal 1
+  End
 End
