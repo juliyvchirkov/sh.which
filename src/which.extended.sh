@@ -19,12 +19,13 @@ which() (
 
                 ;;
             -a)
-                locateall=1
+                locateall="${locateall-1}"
 
                 shift
 
                 ;;
-            -s)
+            -s | -sa | -as)
+                locateall=
                 besilent=1
 
                 shift
@@ -32,28 +33,14 @@ which() (
                 ;;
             -ia | -ai)
                 searchonlypath=1
-                locateall=1
+                locateall="${locateall-1}"
 
                 shift
 
                 ;;
-            -is | -si)
+            -is | -si | -ias | -isa | -ais | -asi | -sia | -sai)
                 searchonlypath=1
-                besilent=1
-
-                shift
-
-                ;;
-            -sa | -as)
-                locateall=1
-                besilent=1
-
-                shift
-
-                ;;
-            -ias | -isa | -ais | -asi | -sia | -sai)
-                searchonlypath=1
-                locateall=1
+                locateall=
                 besilent=1
 
                 shift

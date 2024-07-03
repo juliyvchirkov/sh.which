@@ -13,19 +13,13 @@ which() (
 
                 ;;
             -a)
-                locateall=1
+                locateall="${locateall-1}"
 
                 shift
 
                 ;;
-            -s)
-                besilent=1
-
-                shift
-
-                ;;
-            -sa | -as)
-                locateall=1
+            -s | -sa | -as)
+                locateall=
                 besilent=1
 
                 shift
