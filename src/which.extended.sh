@@ -47,8 +47,7 @@ which() (
 
                 ;;
             -*)
-                printf -- "which: invalid option — %s\n\n" "${1#-}" >&2
-
+                headline="invalid option — ${1#-}"
                 exitstatus=2
 
                 set --
@@ -68,7 +67,7 @@ which() (
         for command; do
             located=
 
-            [ -n "${searchonlypath:-}" ] || {
+            [ -n "${searchonlypath-}" ] || {
                 cmd="$(LC_ALL=C command -v -- "${command}" 2>/dev/null)"
 
                 if [ -z "${cmd}" ]; then
@@ -83,13 +82,13 @@ which() (
 
                     located=1
 
-                    [ -n "${besilent:-}" ] || printf -- "%s\n" "${cmd}"
+                    [ -n "${besilent-}" ] || printf "%s\n" "${cmd}"
 
-                    [ -n "${locateall:-}" ] || continue
+                    [ -n "${locateall-}" ] || continue
                 fi
             }
 
-            IFS=":"
+            IFS=:
 
             #############################
             # shellcheck disable=SC2086 #
@@ -98,19 +97,19 @@ which() (
                 if [ -x "${path}/${command}" ]; then
                     located=1
 
-                    [ -n "${besilent:-}" ] || printf -- "%s/%s\n" "${path}" "${command}"
+                    [ -n "${besilent-}" ] || printf "%s/%s\n" "${path}" "${command}"
 
-                    [ -n "${locateall:-}" ] || break
+                    [ -n "${locateall-}" ] || break
                 fi
             done
 
             [ -n "${located}" ] || exitstatus=1
         done
 
-        return "${exitstatus:-0}"
+        return "${exitstatus-0}"
     fi
 
-    printf "%s\n\n" "which: locates command(s) and reports to standard output" >&2
+    printf "which: %s\n\n" "${headline-locates command(s) and reports to standard output}" >&2
     printf "%s\n" "USAGE" >&2
     printf "    %s\n" "which [-ias] command …" >&2
     printf "%s\n" "OPTIONS" >&2
@@ -122,5 +121,5 @@ which() (
     printf "    %s      %s\n" 1 "failed to locate some command(s)" >&2
     printf "    %s      %s\n" 2 "an invalid option is specified" >&2
 
-    return "${exitstatus:-1}"
+    return "${exitstatus-1}"
 )
