@@ -24,7 +24,7 @@ The current (latest) implementation is **v2.0.0** released at **Jul 09 2024**. T
   
 ## Preamble
 
-The proposed **[implementation](src/which.sh)** of world known regular old school command ``which`` has been developed as fully ``POSIX`` compliant ``sh`` shell function with the double goal
+The proposed **[implementation](src/which.classic.sh)** of world known regular old school command ``which`` has been developed as fully ``POSIX`` compliant ``sh`` shell function with the double goal
 
 - [x] to provide a *decent reasonable alternative* to the regular external **[which](https://man.freebsd.org/cgi/man.cgi?which(1))** command for ``sh`` shell scripts. As a rule ``sh`` shell scripts  depend on some external commands (binaries) so the best practice to avoid a script failure ʼcause of these dependencies is to check if all required external commands (binaries) exist, and the most widespread method is ``which`` command. But the thing is ``which`` command per se is external too, which inspires kinda *chicken or the egg* paradox. The proposed replica has been designed as fully ``POSIX`` compliant ``sh`` shell function with no dependencies to resolve this paradox
 - [x] to cover *the lionsʼ share of interpreters* in their kinda *strict* mode, when these shells meet ``POSIX`` specification acting like ``sh``, **[the standard command language interpreter](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)**
