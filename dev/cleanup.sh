@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
-#################################################
-# shellcheck shell=sh enable=all
-#################################################
+##################################
+# shellcheck shell=sh enable=all #
+##################################
 
 [ -z "${SHDEBUG}" ] || set -vx
 
@@ -14,6 +14,8 @@ swd="${0%"${0##*/}"}"
 if [ -n "${swd}" ]; then
     runquiet cd "${swd}" || {
         printf "Fatal: unable to change current working directory to %s.\n" "${swd}" >&2
+
+        exit 1
     }
 fi
 
