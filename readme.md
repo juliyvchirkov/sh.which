@@ -4,7 +4,7 @@
 
 Designed and developed in 2018 &mdash; 2024 by **[Juliy V. Chirkov](https://juliyvchirkov.dev/)** under the **[MIT license](https://juliyvchirkov.mit-license.org/2018-2024)**.
 
-Linted and tested against the bunch of  **[23 shell interpretters](#the-coverage)** which meet ``POSIX`` specification and are available under ``Linux`` and ``Darwin`` (macOS) platforms nowadays. 
+Linted and tested against the bunch of  **[23 shell interpreters](#the-coverage)** which meet ``POSIX`` specification and are available under ``Linux`` and ``Darwin`` (macOS) platforms nowadays.
 
 The current (latest) implementation is **v2.0.0** released at **Jul 09 2024**. This release delivers the fix for the commands locator routine along with a lot of significant improvements. Please refer to the **[changelog](changelog.md)** for details.
 
@@ -33,9 +33,9 @@ The proposed **[implementation](src/which.classic.sh)** of world known regular o
 
 This ``which`` replica had been tested across and confirmed to run *the same brilliant way* with interpreters ``ash``, ``bash``, ``busybox sh``, ``dash``, ``ksh``, ``loksh``, ``mksh``, ``oksh``, ``pdksh``, ``posh``, ``yash`` and ``zsh``.
 
-Each interpretter in a row has been involved for test rounds in both regular and strict ``POSIX``modes. The last one has been achieved by launching shells thru `sh` symlink.
+Each interpreter in a row has been involved for test rounds in both regular and strict ``POSIX`` modes. The last one has been achieved by launching shells thru `sh` symlink.
 
-Interpretters from the above list running under ``sh``  name turn to act the strict ``POSIX`` way **[to be extremely close](https://www.gnu.org/software/bash/manual/html_node/Bash-POSIX-Mode.html)** to the standard **[sh interpretter](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)** by default, thus making the testing phase much easier.
+Interpreters from the above list running under ``sh``  name turn to act the strict ``POSIX`` way **[to be extremely close](https://www.gnu.org/software/bash/manual/html_node/Bash-POSIX-Mode.html)** to the standard **[sh interpreter](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)** by default, thus making the testing phase much easier.
 
 ## Dependencies
 
@@ -75,7 +75,7 @@ cd sh.which
 sh dev/run-tests.sh
 ```
 
-The suite is built upon **[Shellspec](https://shellspec.info/)** (*full-featured BDD unit testing framework for ``POSIX`` shells*) v0.28.1. Test routines have been designed to utilize **[Shellcheck](https://www.shellcheck.net/)** (*static analysis tool for shell scripts*) v0.10.0 for linting and to cover almost all of the **[shell interpretters](#the-coverage)** listed above.
+The suite is built upon **[Shellspec](https://shellspec.info/)** (*full-featured BDD unit testing framework for ``POSIX`` shells*) v0.28.1. Test routines have been designed to utilize **[Shellcheck](https://www.shellcheck.net/)** (*static analysis tool for shell scripts*) v0.10.0 for linting and to cover almost all of the **[shell interpreters listed above.
 
 To run test thereʼs no need to preinstall neither ``Shellcheck`` nor ``Shellspec``. The  **[runner](dev/run-tests.sh)** will do its best to manage required dependencies automatically keeping your system free of untracked garbage.
 
@@ -99,7 +99,7 @@ The basic dependency ``Shellspec``  will be fetched and installed to ``bin`` sub
 > libraries itself, whick makes this framework platform independent and
 > extremely portable. 
 
-The linter ``Shellcheck``  will be fetched and installed to the same subfolder as well, if possible. The binaries for fetching and install are available for ``x86_64`` and  ``arm64`` architectures of ``Linux``or ``Darwin``  (macOS)  platforms. If your system doesnʼt match, the runner script should try to utilize your local  ``shellcheck``command  if youʼve got one preinstalled, and will skip the linting routine otherwise.
+The linter ``Shellcheck``  will be fetched and installed to the same subfolder as well, if possible. The binaries for fetching and install are available for ``x86_64`` and  ``arm64`` architectures of ``Linux``  or  ``Darwin``  (macOS)  platforms. If your system doesnʼt match, the runner script should try to utilize your local  ``shellcheck`` command  if youʼve got one preinstalled, and will skip the linting routine otherwise.
 
 The runner also have been designed to utilize no shell interpretters except those you have already preinstalled. If some **[shell from the list](#the-coverage)** is not available at a system,  the corresponding tests will be skipped.
 
@@ -302,7 +302,7 @@ The example below, in turn, uncovers the other side of a coin when a regular rou
 which -a -- -s bash
 ```
 
-``-a`` is processed as usual, but ``-s`` is not treated as option anymore. The leading double dash turns it into a comand along with the following ``bash``, and instead of expected silent exit status 0 on return the above construct leads to report(s) about located ``bash`` binary(ies) printed to ``/dev/stdout`` along with exit status 1, since ``-s`` command is unlikely to be located.
+``-a`` is processed as usual, but ``-s`` is not treated as option anymore. The leading double dash turns it into a command along with the following ``bash``, and instead of expected silent exit status 0 on return the above construct leads to report(s) about located ``bash`` binary(ies) printed to ``/dev/stdout`` along with exit status 1, since ``-s`` command is unlikely to be located.
 
 ```shell
 /usr/local/bin/bash
