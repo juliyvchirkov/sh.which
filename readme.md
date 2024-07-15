@@ -96,23 +96,23 @@ The basic dependency ``Shellspec``  will be fetched and installed to ``bin`` sub
 >  
 > Moreover,  being focused on ``POSIX`` cross-platform shell scripts and shell
 > script libraries, ``Shellspec`` is completely built on ``sh`` scripts and
-> libraries itself, whick makes this framework platform independent and
+> libraries itself, which makes this framework platform independent and
 > extremely portable. 
 
 The linter ``Shellcheck``  will be fetched and installed to the same subfolder as well, if possible. The binaries for fetching and install are available for ``x86_64`` and  ``arm64`` architectures of ``Linux``  or  ``Darwin``  (macOS)  platforms. If your system doesnʼt match, the runner script should try to utilize your local  ``shellcheck`` command  if youʼve got one preinstalled, and will skip the linting routine otherwise.
 
-The runner also have been designed to utilize no shell interpretters except those you have already preinstalled. If some **[shell from the list](#the-coverage)** is not available at a system,  the corresponding tests will be skipped.
+The runner also have been designed to utilize no shell interpreters except those you have already preinstalled. If some **[shell from the list](#the-coverage)** is not available at a system,  the corresponding tests will be skipped.
 
 > [!IMPORTANT]
 > Tests against ``loksh`` and ``pdksh`` shells have been excluded from the suite since
-> these interpretters force ``Shellspec`` inner shell inspection routine stuck with 
+> these interpreters force ``Shellspec`` inner shell inspection routine stuck with
 > this inspection for ages.
 >
-> The same glitch makes tests against ``oksh`` interpretter to be available only for
+> The same glitch makes tests against ``oksh`` interpreter to be available only for
 > ``Darwin`` (macOS) platform.
 >
 > In turn, tests against ``posh`` shell for ``Darwin`` platform have been excluded
-> from the suite ʼcause the release of this interpretter delivered with 
+> from the suite ʼcause the release of this interpreter delivered with 
 > **[brew](https://brew.sh)** for macOS is broken. 
 
 > [!TIP]
@@ -435,7 +435,7 @@ Although nowadays, when the quarter of XXI century is almost left behind, the ol
 
 Today many vendors follow the practice to deliver a number of useful extras along with a shell. These extras mostly are collections of vendorsʼ ``builtins`` and sometimes also of vendorsʼ ``functions``. 
 
-Shortly, ``builtin`` is an integrated command which code is a part of code of a shell interpretter, and ``function`` is a regular function, implemented by vendor for own shell interpretter on the grounds of its features and benefits (a nice primer is the **[Fish shell stuff](https://fishshell.com/docs/current/commands.html#known-functions)**). 
+Shortly, ``builtin`` is an integrated command which code is a part of code of a shell interpreter, and ``function`` is a regular function, implemented by vendor for own shell interpreter on the grounds of its features and benefits (a nice primer is the **[Fish shell stuff](https://fishshell.com/docs/current/commands.html#known-functions)**).
 
 The collections are developed **[to implement functionality impossible or inconvenient to obtain with separate utilities](https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html)**, and as a rule at least some vendorsʼ ``builtins`` and ``functions`` are implemented to override classic external binaries like ``:``, ``[``, ``basename``, ``cd``, ``dirname``, ``echo``, ``false``, ``id``, ``kill``, ``mkdir``, ``mkfifo``, ``mktemp``, ``printenv``, ``printf``, ``pwd``, ``realpath``, ``rm``, ``rmdir``, ``sleep``, ``sync``, ``tee``, ``test``, ``time``, ``true``, ``tty``, ``uname``, ``unlink``, ``whoami`` **[et cetera](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)**.
 
