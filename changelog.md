@@ -2,6 +2,14 @@
 
 This changelog includes all notable changes to the **[which.sh](https://github.com/juliyvchirkov/sh.which)** project.
 
+## [Unreleased]
+
+### Fixed
+
+- The oversight in **[cleanup](dev/cleanup.sh)** script. By design if the script fails to change the working directory to **[dev](dev)** before starting the cleanup routine, it should abort with the statement *"Fatal: unable to change current working directory to dev"* on ``/dev/stderr``, but this could never happen due to the **[missing directive](dev/cleanup.sh#L18)** ``exit 1``  next to the above report
+- A number of grammar typos in **[readme](readme.md)**
+- Broken ``404`` link at the first sentense of **[Preamble](readme.md#preamble)**. The link has been pointing to  **[src](src)/which.sh** instead of **[src/which.classic.sh](src/which.classic.sh)** ʼcause it has been initially added to the readme upon the old project tree structure which turned obsolete on **[which on steroids](readme.md#which-on-steroids)** arrival
+
 ## [2.0.0] - 2024-07-09
 
 ### Added
@@ -27,7 +35,7 @@ This changelog includes all notable changes to the **[which.sh](https://github.c
 
 ### Fixed
 
-- The oversight at PATH parsing subroutine due to which the function has been unable to locate a command if a path of that command contains space(s)
+- The oversight at PATH parsing subroutine due to which the function has been unable to locate a command if a path of that command contains space(s) 
 
 ## [1.0.0] - 2018-04-23
 
@@ -36,7 +44,7 @@ This changelog includes all notable changes to the **[which.sh](https://github.c
 - First public release of  ``which`` function (initially published as **[gist](https://gist.github.com/juliyvchirkov/d2c7ff01846157f58b1fc1f3a3b1e36c)**)
 
   
-
+[unreleased]: https://github.com/juliyvchirkov/sh.which/compare/v2.0.0...HEAD
 [2.0.0]: https://github.com/juliyvchirkov/sh.which/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/juliyvchirkov/sh.which/releases/tag/v1.0.0
 
