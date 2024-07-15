@@ -75,7 +75,7 @@ cd sh.which
 sh dev/run-tests.sh
 ```
 
-The suite is built upon **[Shellspec](https://shellspec.info/)** (*full-featured BDD unit testing framework for ``POSIX`` shells*) v0.28.1. Test routines have been designed to utilize **[Shellcheck](https://www.shellcheck.net/)** (*static analysis tool for shell scripts*) v0.10.0 for linting and to cover almost all of the **[shell interpreters listed above.
+The suite is built upon **[Shellspec](https://shellspec.info/)** (*full-featured BDD unit testing framework for ``POSIX`` shells*) v0.28.1. Test routines have been designed to utilize **[Shellcheck](https://www.shellcheck.net/)** (*static analysis tool for shell scripts*) v0.10.0 for linting and to cover almost all of the **[shell interpreters](#the-coverage)** listed above.
 
 To run test thereʼs no need to preinstall neither ``Shellcheck`` nor ``Shellspec``. The  **[runner](dev/run-tests.sh)** will do its best to manage required dependencies automatically keeping your system free of untracked garbage.
 
